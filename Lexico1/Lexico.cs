@@ -65,10 +65,105 @@ namespace Lexico1
                     palabra += c;
                     archivo.Read();
                 }
+                if (c == '.')
+                {
+                    palabra += c;
+                    archivo.Read();
+                    if (char.IsDigit(c = (char)archivo.Read()))
+                    {
+                        palabra += c;
+                        while (char.IsDigit(c = (char)archivo.Peek()))
+                        {
+                            palabra += c;
+                            archivo.Read();
+                        }
+                    }
+                    else
+                    {
+                        throw new Exception("Error lexico: Se espera un digito");
+                    }  
+                }
+                if (char.ToLower(c) == 'e')
+                {
+                    palabra += c;
+
+                    archivo.Read();
+                    if((c=(char)archivo.Peek()) == '+' || c == '-')
+                    {
+                        palabra += c;
+                        archivo.Read();
+                    }
+                    Console.WriteLine(palabra);
+                    if (char.IsDigit(c = (char)archivo.Read()))
+                    {
+                        palabra += c;
+                        while (char.IsDigit(c = (char)archivo.Peek()))
+                        {
+                            palabra += c;
+                            archivo.Read();
+                        }
+                        
+                    }
+                    else
+                    {
+                        throw new Exception("Error lexico: Se espera un digito");
+                    }
+                }
+
             }
             else if (c=='=')
             {
                 setClasificacion(Clasificaciones.Asignacion);
+                if ((c = (char)archivo.Peek()) == '=')
+                {
+                    palabra += c;
+                    archivo.Read();
+                    setClasificacion(Clasificaciones.OperadorRelacional);
+                }
+            }
+            else if (c == ':')
+            {
+                setClasificacion(Clasificaciones.Caracter);
+                if ((c = (char)archivo.Peek()) == '=')
+                {
+                    palabra += c;
+                    archivo.Read();
+                    setClasificacion(Clasificaciones.Inicializacion);
+                }
+            }
+            else if (c == ';')
+            {
+                setClasificacion(Clasificaciones.FinSentencia);
+            }
+            else if (c == '!')
+            {
+                setClasificacion(Clasificaciones.OperadorLogico);
+                if ((c = (char)archivo.Peek()) == '=')
+                {
+                    palabra += c;
+                    archivo.Read();
+                    setClasificacion(Clasificaciones.OperadorRelacional);
+                }
+            }
+            else if (c == '&')
+            {
+                setClasificacion(Clasificaciones.Caracter);
+                if ((c = (char)archivo.Peek()) == '&')
+                {
+                    palabra += c;
+                    archivo.Read();
+                    setClasificacion(Clasificaciones.OperadorLogico);
+                }
+            }
+            else if (c == '|')
+            {
+                setClasificacion(Clasificaciones.Caracter);
+                if ((c = (char)archivo.Peek()) == '|')
+                {
+                    palabra += c;
+                    archivo.Read();
+                    setClasificacion(Clasificaciones.OperadorLogico);
+                }
             }
             else 
             {

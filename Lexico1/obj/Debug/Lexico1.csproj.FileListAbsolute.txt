@@ -5,3 +5,10 @@ C:\Users\djime\Documents\GitHub\LenguajesYAutomatas-6V\Lexico1\obj\Debug\Lexico1
 C:\Users\djime\Documents\GitHub\LenguajesYAutomatas-6V\Lexico1\obj\Debug\Lexico1.csproj.CoreCompileInputs.cache
 C:\Users\djime\Documents\GitHub\LenguajesYAutomatas-6V\Lexico1\obj\Debug\Lexico1.exe
 C:\Users\djime\Documents\GitHub\LenguajesYAutomatas-6V\Lexico1\obj\Debug\Lexico1.pdb
+C:\Users\djime\Documents\GitHub\Lexico1_LyA6V\Lexico1\bin\Debug\Lexico1.exe.config
+C:\Users\djime\Documents\GitHub\Lexico1_LyA6V\Lexico1\bin\Debug\Lexico1.exe
+C:\Users\djime\Documents\GitHub\Lexico1_LyA6V\Lexico1\bin\Debug\Lexico1.pdb
+C:\Users\djime\Documents\GitHub\Lexico1_LyA6V\Lexico1\obj\Debug\Lexico1.csprojAssemblyReference.cache
+C:\Users\djime\Documents\GitHub\Lexico1_LyA6V\Lexico1\obj\Debug\Lexico1.csproj.CoreCompileInputs.cache
+C:\Users\djime\Documents\GitHub\Lexico1_LyA6V\Lexico1\obj\Debug\Lexico1.exe
+C:\Users\djime\Documents\GitHub\Lexico1_LyA6V\Lexico1\obj\Debug\Lexico1.pdb
