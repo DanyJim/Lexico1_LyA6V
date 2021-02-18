@@ -86,14 +86,12 @@ namespace Lexico1
                 if (char.ToLower(c) == 'e')
                 {
                     palabra += c;
-
                     archivo.Read();
                     if((c=(char)archivo.Peek()) == '+' || c == '-')
                     {
                         palabra += c;
                         archivo.Read();
                     }
-                    Console.WriteLine(palabra);
                     if (char.IsDigit(c = (char)archivo.Read()))
                     {
                         palabra += c;
@@ -102,14 +100,12 @@ namespace Lexico1
                             palabra += c;
                             archivo.Read();
                         }
-                        
                     }
                     else
                     {
                         throw new Exception("Error lexico: Se espera un digito");
                     }
                 }
-
             }
             else if (c=='=')
             {
