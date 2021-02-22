@@ -42,8 +42,34 @@ namespace Lexico2
         {
             char c;
             string palabra = "";
-
+            
             setContenido(palabra);
+            if (getClasificacion() == Clasificaciones.Identificador)
+            {
+                switch (getContenido())
+                {
+                    case "char":
+                    case "int":
+                    case "float":
+                        setClasificacion(Clasificaciones.TipoDato);
+                        break;
+                    case "private":
+                    case "protected":
+                    case "public":
+                        setClasificacion(Clasificaciones.Zona);
+                        break;
+                    case "if":
+                    case "else":
+                    case "switch":
+                        setClasificacion(Clasificaciones.Condicion);
+                        break;
+                    case "for":
+                    case "while":
+                    case "do":
+                        setClasificacion(Clasificaciones.Ciclo);
+                        break;
+                }
+            }
             bitacora.WriteLine("Token = " + getContenido());
             bitacora.WriteLine("Clasificacion = " + getClasificacion());
         }

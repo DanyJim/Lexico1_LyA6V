@@ -13,6 +13,7 @@ namespace Lexico2
             Identificador, Numero, Asignacion, Inicializacion, FinSentencia,
             OperadorLogico, OperadorRelacional, OperadorTermino, OperadorFactor,
             IncrementoTermino, IncrementoFactor, Cadena, Ternario, Caracter,
+            TipoDato, Zona, Condicion, Ciclo,
         }
         private string Contenido;
         private Clasificaciones Clasificacion;
