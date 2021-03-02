@@ -40,9 +40,129 @@ namespace Lexico2
         }
         public void NextToken()
         {
+            Console.WriteLine(".");
+            int estado = 0;
+            const int f = -1;
+            const int e = -2;
             char c;
             string palabra = "";
-            
+
+            while (estado >= 0)
+            {
+                c = (char)archivo.Peek();
+                switch (estado)
+                {
+                    case 0:
+                        if (char.IsWhiteSpace(c))
+                        {
+                            estado = 0;
+                        }
+                        else if(char.IsLetter(c))
+                        {
+                            estado = 1;
+                        }
+                        else if (char.IsDigit(c))
+                        {
+                            estado = 2;
+                        }
+                        else
+                        {
+                            estado = 29;
+                        }
+                        break;
+                    case 1:
+                        setClasificacion(Clasificaciones.Identificador);
+                        break;
+                    case 2:
+                        setClasificacion(Clasificaciones.Numero);
+                        if (char.IsDigit(c))
+                        {
+                            estado = 2;
+                        }
+                        else if (c == '.')
+                        {
+                            estado = 3;
+                        }
+                        else if(char.ToLower(c) == 'e')
+                        {
+                            estado = 5;
+                        }
+                        else
+                        {
+                            estado = f;
+                        }
+                        break;
+                    case 3:
+                        if (char.IsDigit(c))
+                        {
+                            estado = 4;
+                        }
+                        else
+                        {
+                            throw new Exception("Error lexico: Se espera un digito");
+                        }
+                        break;
+                    case 4:
+                        if (char.IsDigit(c))
+                        {
+                            estado = 4;
+                        }
+                        else if (char.ToLower(c) == 'e')
+                        {
+                            estado = 5;
+                        }
+                        else
+                        {
+                            estado = f;
+                        }
+                        break;
+                    case 5:
+                        if (c == '+' || c == '-')
+                        {
+                            estado = 6;
+                        }
+                        else if (char.IsDigit(c))
+                        {
+                            estado = 7;
+                        }
+                        else
+                        {
+                            throw new Exception("Error lexico: Se espera un digito");
+                        }
+                        break;
+                    case 6:
+                        if (char.IsDigit(c))
+                        {
+                            estado = 7;
+                        }
+                        else
+                        {
+                            throw new Exception("Error lexico: Se espera un digito");
+                        }
+                        break;
+                    case 7:
+                        if (char.IsDigit(c))
+                        {
+                            estado = 7;
+                        }
+                        else
+                        {
+                            estado = f;
+                        }
+                        break;
+                    case 29:
+                        setClasificacion(Clasificaciones.Caracter);
+                        estado = f;
+                        break;
+                }
+                if (estado >= 0)
+                {
+                    archivo.Read();
+                    if (estado > 0)
+                        palabra += c;
+                }
+
+            }
             setContenido(palabra);
             if (getClasificacion() == Clasificaciones.Identificador)
             {

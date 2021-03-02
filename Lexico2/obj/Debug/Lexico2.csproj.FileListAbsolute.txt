@@ -1,0 +1,7 @@
+C:\Users\djime\Documents\GitHub\Lexico1_LyA6V\Lexico2\bin\Debug\Lexico2.exe.config
+C:\Users\djime\Documents\GitHub\Lexico1_LyA6V\Lexico2\bin\Debug\Lexico2.exe
+C:\Users\djime\Documents\GitHub\Lexico1_LyA6V\Lexico2\bin\Debug\Lexico2.pdb
+C:\Users\djime\Documents\GitHub\Lexico1_LyA6V\Lexico2\obj\Debug\Lexico2.csprojAssemblyReference.cache
+C:\Users\djime\Documents\GitHub\Lexico1_LyA6V\Lexico2\obj\Debug\Lexico2.csproj.CoreCompileInputs.cache
+C:\Users\djime\Documents\GitHub\Lexico1_LyA6V\Lexico2\obj\Debug\Lexico2.exe
+C:\Users\djime\Documents\GitHub\Lexico1_LyA6V\Lexico2\obj\Debug\Lexico2.pdb
