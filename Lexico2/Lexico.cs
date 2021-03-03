@@ -40,7 +40,6 @@ namespace Lexico2
         }
         public void NextToken()
         {
-            Console.WriteLine(".");
             int estado = 0;
             const int f = -1;
             const int e = -2;
@@ -65,6 +64,14 @@ namespace Lexico2
                         {
                             estado = 2;
                         }
+                        else if (c == '=')
+                        {
+                            estado = 8;
+                        }
+                        else if (c == ':')
+                        {
+                            estado = 9;
+                        }
                         else
                         {
                             estado = 29;
@@ -72,6 +79,14 @@ namespace Lexico2
                         break;
                     case 1:
                         setClasificacion(Clasificaciones.Identificador);
+                        if (char.IsLetterOrDigit(c))
+                        {
+                            estado = 1;
+                        }
+                        else
+                        {
+                            estado = f;
+                        }
                         break;
                     case 2:
                         setClasificacion(Clasificaciones.Numero);
@@ -149,6 +164,36 @@ namespace Lexico2
                         {
                             estado = f;
                         }
+                        break;
+                    case 8:
+                        setClasificacion(Clasificaciones.Asignacion);
+                        if (c == '=')
+                        {
+                            estado = 16;
+                        }
+                        else
+                        {
+                            estado = f;
+                        }
+                        break;
+                    case 9:
+                        setClasificacion(Clasificaciones.Caracter);
+                        if (c == '=')
+                        {
+                            estado = 10;
+                        }
+                        else
+                        {
+                            estado = f;
+                        }
+                        break;
+                    case 10:
+                        setClasificacion(Clasificaciones.Inicializacion);
+                        estado = f;
+                        break;
+                    case 16:
+                        setClasificacion(Clasificaciones.OperadorRelacional);
+                        estado = f;
                         break;
                     case 29:
                         setClasificacion(Clasificaciones.Caracter);
