@@ -13,7 +13,7 @@ namespace Lexico3
             Identificador, Numero, Asignacion, Inicializacion, FinSentencia,
             OperadorLogico, OperadorRelacional, OperadorTermino, OperadorFactor,
             IncrementoTermino, IncrementoFactor, Cadena, Ternario, Caracter,
-            TipoDato, Zona, Condicion, Ciclo,
+            TipoDato, Zona, Condicion, Ciclo, InicioBloque, FinBloque,
         }
         private string Contenido;
         private Clasificaciones Clasificacion;

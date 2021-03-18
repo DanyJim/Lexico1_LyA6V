@@ -9,12 +9,19 @@ namespace Lexico3
 {
     //Requerimiento 1: Identificar Linea y Caracter en los Errores Lexicos
     //Requerimiento 2: Levantar la Excepcion cuando exista un Error e identificar el Tipo de Error
+    //Requerimiento 3: Agregar el Token '{' y '}' en la matriz TRAND6V 
+                //Tip: Agregar la columna { } al final de la matriz  
+    //Requerimiento 4: Considerar los Comentarios en el analisis lexico (De Linea y Multi-linea)
+                //Tip: Agregar #10 al final de la matriz
+    //Requerimiento 5: Guardar en el log los Errores Lexicos generados por la Excepcion
+            //Lunes 12 Ascesoria / Entregas
     class Lexico : Token, IDisposable
     {
         StreamReader archivo;
         StreamWriter bitacora;
         const int F = -1;
         const int E = -2;
+        int linea, caracter;
         int[,] TRAND6V =
         {
             //WS,EF, L, D, ., E, +, -, =, :, ;, &, |, !, >, <, *, /, %, ", ', ?, La
@@ -55,6 +62,7 @@ namespace Lexico3
             Console.WriteLine("Compilando el archivo Prueba.txt...");
             if (File.Exists("C:\\Archivos\\Prueba.txt"))
             {
+                linea = caracter = 1;
                 archivo = new StreamReader("C:\\Archivos\\Prueba.txt");
                 bitacora = new StreamWriter("C:\\Archivos\\Prueba.log");
                 bitacora.AutoFlush = true;
@@ -91,8 +99,16 @@ namespace Lexico3
                 if (estado >= 0)
                 {
                     archivo.Read();
+                    caracter++;
+                    if (c == 10)
+                    {
+                        linea++;
+                        caracter = 1;
+                    }
                     if (estado > 0)
                         palabra += c;
+                    else
+                        palabra = "";
                 }
             }
             setContenido(palabra);
